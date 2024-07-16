@@ -1,11 +1,12 @@
-
+import React from "react";
+import Routes from "./routes/index";
 
 
 function App() {
   return (
-    <>
-      <h1>Welcome App</h1>
-    </>
+    <React.Fragment>
+      <Routes />
+    </React.Fragment>
   );
 }
 

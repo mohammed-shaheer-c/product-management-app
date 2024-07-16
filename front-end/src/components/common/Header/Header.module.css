@@ -1,0 +1,45 @@
+/* Header.module.css */
+.navbarCustom {
+    background-color: #03395f;
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbarBrand {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .navLink {
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+  }
+  
+  .navLink:hover {
+    color: #ffba00;
+  }
+  
+  .searchForm {
+    width: 50%;
+  }
+  
+  .formControl {
+    width: 397px;
+    max-width: 100%;
+    border-radius: 20px 0 0 20px;
+    padding: 10px;
+    border: none;
+    z-index: 1px;
+  }
+  
+  .searchButton {
+    padding: 10px 34px;
+    background-color: #ffba00;
+    border: none;
+    color: white;
+  }
+  
+  .searchButton:hover {
+    background-color: #e09c00;
+  }
+  

@@ -1,0 +1,87 @@
+/* Signup.module.css */
+.containerFluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f7f8fc;
+}
+
+.box {
+  height: 500px;
+  width: 900px;
+  display: flex;
+}
+
+.loginSection, .signupSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginSection {
+  background-color: #03395f;
+  color: white;
+  padding: 60px;
+}
+
+.signupSection {
+  background-color: white;
+  padding: 60px;
+}
+
+.signuSectionHead {
+  color: #ffba00;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputGroup {
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.signInButton, .signUpButton {
+  padding: 6px 29px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signInButton {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.signUpButton {
+  background-color: #ffba00;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signInButton:hover, .signUpButton:hover {
+  opacity: 0.9;
+}
