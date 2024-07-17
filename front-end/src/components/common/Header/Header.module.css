@@ -24,19 +24,81 @@
   }
   
   .formControl {
-    width: 397px;
+    width: 307px;
     max-width: 100%;
     border-radius: 20px 0 0 20px;
     padding: 10px;
     border: none;
     z-index: 1px;
   }
-  
+  .options{
+    position: relative;
+    right: 55px;
+  }
   .searchButton {
+    position: relative;
+    top: 10px;
+    right: 5px;
     padding: 10px 34px;
     background-color: #ffba00;
     border: none;
     color: white;
+  }
+  .headermenu{
+    width: 75%;
+    .flex{
+      justify-content: center;
+    }
+  }
+  .logoimage{
+    text-align: left;
+    cursor: pointer;
+  }
+  .clrgry{
+    color: #b9baba;
+  }
+  .alignlft{
+    text-align: left;
+  }
+  .pdTB20{
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  .menulist{
+    border-bottom: 1px solid #b9baba;
+    font-weight: 600;
+  }
+  .sidebarmenu{
+    overflow-y: scroll;
+    height: 600px;
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background:#aaaaaa;
+      border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #aaaaaa;
+    }
+  }
+
+  .pd20{
+    padding: 20px;
+  }
+  .btncancel{
+    width: 100%;
+    text-align: end;
   }
   
   .searchButton:hover {

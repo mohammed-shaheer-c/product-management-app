@@ -1,0 +1,43 @@
+.sidebar {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .categoryList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .categoryItem {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .categoryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .subCategoryList {
+    list-style: none;
+    padding-left: 20px;
+  }
+  
+  .subCategoryItem {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .subCategoryItem input {
+    margin-right: 10px;
+  }
+  

@@ -5,10 +5,11 @@ import { Navigate } from "react-router-dom";
 import Login from "../pages/auth/Login/LoginPage";
 import Register from "../pages/auth/Signup/SignupPage";
 import Home from "../pages/Home/Home";
+import ProductDetail from "../pages/Products/ProductDetailPage";
 
 const authProtectedRoutes = [
-  // Home page
   { path: "/home", component: Home },
+  { path: "/product-detail", component: ProductDetail },
   {
     path: "/",
     exact: true,

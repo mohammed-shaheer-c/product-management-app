@@ -1,0 +1,41 @@
+.modalDialog {
+    max-width: 500px; /* Set the width of the modal */
+  }
+  
+  .modalHeader {
+    border-bottom: none;
+    justify-content: center;
+  }
+  
+  .modalTitle {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .formLabel {
+    font-weight: bold;
+  }
+  
+  .inputGroup {
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup input {
+    margin-right: 10px;
+    flex: 1;
+  }
+  
+  .addVariantsBtn {
+    margin-bottom: 20px;
+  }
+  
+  .modalFooter {
+    justify-content: center;
+  }
+  
+  .modalFooter button {
+    width: 100px;
+    margin: 0 10px;
+  }
+  

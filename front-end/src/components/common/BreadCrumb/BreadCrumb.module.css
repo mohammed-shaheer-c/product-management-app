@@ -1,0 +1,22 @@
+.breadcrumbContainer {
+  padding: 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.active {
+  color: #6c757d;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

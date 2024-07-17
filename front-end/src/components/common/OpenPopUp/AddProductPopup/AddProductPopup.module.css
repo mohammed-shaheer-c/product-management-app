@@ -1,0 +1,68 @@
+.modalDialog {
+    max-width: 800px; /* Increase the width of the modal */
+  }
+  
+  .modalHeader {
+    border-bottom: none;
+  }
+  
+  .modalTitle {
+    margin: 0 auto;
+  }
+  
+  .formLabel {
+    font-weight: bold;
+  }
+  
+  .inputGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup input {
+    margin-right: 10px;
+    flex: 1;
+  }
+  
+  .addVariantsBtn {
+    margin-bottom: 20px;
+  }
+  
+  .imageUpload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .uploadedImages {
+    display: flex;
+    align-items: center;
+  }
+  
+  .uploadedImages img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+  
+  .uploadIcon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    cursor: pointer;
+  }
+  
+  .uploadIcon input[type="file"] {
+    display: none;
+  }
+  
+  .uploadIcon::before {
+    content: '+';
+    font-size: 24px;
+    color: #ccc;
+  }
+  

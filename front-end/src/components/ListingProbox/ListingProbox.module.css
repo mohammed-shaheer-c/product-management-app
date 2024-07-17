@@ -1,0 +1,51 @@
+.listingProbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .productCard {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .productCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .productImage {
+    width: 100%;
+    height: auto;
+  }
+  
+  .productDetails {
+    padding: 15px;
+  }
+  
+  .productName {
+    font-size: 1em;
+    margin: 0 0 10px 0;
+  }
+  
+  .productPrice {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+  
+  .productRating {
+    display: flex;
+  }
+  
+  .filledStar {
+    color: #ff0;
+  }
+  
+  .emptyStar {
+    color: #ccc;
+  }
+  
