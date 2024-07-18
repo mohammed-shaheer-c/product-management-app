@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css'; // Ensure this path matches your actual CSS module file
-
+import { login } from "../../../services/authService";
 export default function LoginPage() {
+  const navigate = useNavigate();
   // States
   const [formFields, setFormFields] = useState({
     txtEmail: '',
@@ -44,16 +46,15 @@ export default function LoginPage() {
       }));
       // Signin functionality 
 
-      // if (response?.error) {
-      //     // Clear previous error messages
-      //     setErrorMessage((prev)=>({...prev, txtEmailErrorMsg: ''}));
-      //     setErrorMessage((prev)=>({...prev, txtPasswordErrorMsg: ''}));
+      const  result = await login(formFields);
+      console.log("result",result);
+      if(result.code == 200){
+         localStorage.setItem('authUser', true);
+         navigate('/home');
+      }else{
+        setErrorMessage((prev)=>({...prev, apiErrorMsg: result.message}));
+      }
 
-      //     setErrorMessage((prev)=>({...prev,apiErrorMsg : response?.error}));
-      // }else{
-      //     setErrorMessage((prev)=>({...prev,apiErrorMsg : ''}));
-      //     router.push('/home');
-      // }
 
     } catch (error) {
       // Handle error
@@ -75,6 +76,7 @@ export default function LoginPage() {
       <div className={`${styles.box} row`}>
         <div className={`${styles.loginSection} col-8`}>
           <h2 className={`${styles.signupSectionHead} ms-5`}>Sign In to Your Account</h2>
+          {errorMessage.apiErrorMsg !=='' &&<span style={{color : 'red'}}>{errorMessage.apiErrorMsg}</span>}
           <form onSubmit={handleSubmit}>
             <div className={styles.inputGroup}>
               <input

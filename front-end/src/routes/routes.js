@@ -9,7 +9,7 @@ import ProductDetail from "../pages/Products/ProductDetailPage";
 
 const authProtectedRoutes = [
   { path: "/home", component: Home },
-  { path: "/product-detail", component: ProductDetail },
+  { path: "/product-detail/:id", component: ProductDetail },
   {
     path: "/",
     exact: true,

@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { isUserLogin } from "../hooks/useAuth";
 
 const AuthProtected = (props) => {
@@ -15,14 +15,28 @@ const AuthProtected = (props) => {
     redirect is un-auth access protected routes via url
   */
 
-  // if (!loggedIn) {
-  //   return (
-  //     <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
-  //   );
-  // }
+  if (!loggedIn) {
+    return (
+      <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
+    );
+  }
 
   return <>{props.children}</>;
 };
 
-export default AuthProtected;
+const AccessRoute = (props) =>{
+  const loggedIn = isUserLogin();
+  /*
+    redirect is un-auth access protected routes via url
+  */
+
+  if (loggedIn) {
+    return (
+      <Navigate to={{ pathname: "/home", state: { from: props.location } }} />
+    );
+  }
+
+  return <>{props.children}</>;
+}
+export  {AuthProtected,AccessRoute};
 

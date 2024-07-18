@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import styles from './Signup.module.css'; // Import the CSS module
+import { signup } from "../../../services/authService";
 
 function SignupPage() {
+  const navigate = useNavigate();
   // States
   const [formFields, setFormFields] = useState({
     txtName : '',
@@ -50,18 +53,16 @@ function SignupPage() {
         txtEmailErrorMsg: '',
         txtPasswordErrorMsg: '',
       }));
-      // Signin functionality 
+      // Sign up functionality 
+      const  result = await signup(formFields);
+      
+      if(result.code == 200){
+         localStorage.setItem('authUser', true);
+         navigate('/home');
+      }else{
 
-      // if (response?.error) {
-      //     // Clear previous error messages
-      //     setErrorMessage((prev)=>({...prev, txtEmailErrorMsg: ''}));
-      //     setErrorMessage((prev)=>({...prev, txtPasswordErrorMsg: ''}));
-
-      //     setErrorMessage((prev)=>({...prev,apiErrorMsg : response?.error}));
-      // }else{
-      //     setErrorMessage((prev)=>({...prev,apiErrorMsg : ''}));
-      //     router.push('/home');
-      // }
+        setErrorMessage((prev)=>({...prev, apiErrorMsg: result.message}));
+      }
 
     } catch (error) {
       // Handle error

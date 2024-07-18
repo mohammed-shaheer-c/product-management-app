@@ -21,7 +21,7 @@ const AddCategoryPopup = ({ show, handleClose, handleAddCategory }) => {
 
     handleAddCategory(categoryName.trim());
     setCategoryName('');
-    handleClose();
+  
   };
   // Function for modal close
   const handleModalClose = () => {

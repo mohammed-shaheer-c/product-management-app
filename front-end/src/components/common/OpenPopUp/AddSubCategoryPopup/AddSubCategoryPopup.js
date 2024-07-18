@@ -50,7 +50,7 @@ const AddSubCategoryPopup = ({ show, handleClose, handleAddSubCategory, category
             <Form.Control as="select" value={selectedCategory} onChange={handleCategoryChange}>
               <option value="">Select category</option>
               {categoryList?.map((category, index) => (
-                <option key={index} value={category.id}>
+                <option key={index} value={category._id}>
                   {category.name}
                 </option>
               ))}

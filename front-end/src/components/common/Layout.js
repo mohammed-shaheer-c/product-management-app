@@ -1,13 +1,14 @@
-import React from 'react'
-import Header from './Header/Header'
+import React from 'react';
+import Header from './Header/Header';
+import SearchFilterProvider from '../../context/SearchFilterContext';
 
 function Layout(props) {
   return (
-    <>
-      <Header/>
+    <SearchFilterProvider>
+      <Header />
       {props.children}
-    </>
-  )
+    </SearchFilterProvider>
+  );
 }
 
-export default Layout
+export default Layout;

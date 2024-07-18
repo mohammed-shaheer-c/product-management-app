@@ -1,39 +1,29 @@
 // src/services/authService.js
 
-import api from './api';
-
-export const login = async (email, password) => {
-    try {
-        const response = await api.post('/auth/login', { email, password });
-        const { token, user } = response.data;
-        localStorage.setItem('authToken', token);
-        return user;
-    } catch (error) {
-        throw error.response ? error.response.data : new Error('Network Error');
-    }
-};
+import {API_BASE_URL} from './api';
+import axios from 'axios';
 
 export const signup = async (userData) => {
     try {
-        const response = await api.post('/auth/signup', userData);
-        const { token, user } = response.data;
-        localStorage.setItem('authToken', token);
-        return user;
+        const response =  await axios.post(`${API_BASE_URL}/auth/register`, userData);
+        return response.data;
     } catch (error) {
+        console.log("err",error);
         throw error.response ? error.response.data : new Error('Network Error');
     }
 };
 
-export const logout = () => {
-    localStorage.removeItem('authToken');
-    // Additional logout logic, like redirecting to login page
-};
-
-export const getCurrentUser = async () => {
+export const login = async (userData) => {
     try {
-        const response = await api.get('/auth/me');
-        return response.data.user;
+        console.log("`${API_BASE_URL}/auth/login`",`${API_BASE_URL}/auth/login`);
+        const response = await axios.post(`${API_BASE_URL}/auth/login`, userData);
+ 
+        return response.data;
     } catch (error) {
+        console.log("err",error);
         throw error.response ? error.response.data : new Error('Network Error');
     }
 };
+
+
+
