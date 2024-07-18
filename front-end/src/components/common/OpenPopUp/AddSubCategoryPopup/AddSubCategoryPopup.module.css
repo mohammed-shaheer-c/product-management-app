@@ -20,7 +20,9 @@
   .inputGroup {
     margin-bottom: 15px;
   }
-  
+  .errorText{
+    color: red;
+  }
   .inputGroup input {
     margin-right: 10px;
     flex: 1;

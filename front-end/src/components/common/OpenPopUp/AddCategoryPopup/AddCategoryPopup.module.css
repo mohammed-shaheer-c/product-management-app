@@ -12,6 +12,9 @@
     font-size: 1.5rem;
     font-weight: bold;
   }
+  .errorText{
+    color: red;
+  }
   
   .formLabel {
     font-weight: bold;

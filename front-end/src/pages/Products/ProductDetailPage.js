@@ -1,19 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BreadCrumb from '../../components/common/BreadCrumb/BreadCrumb ';
+import  AddProductPopup  from '../../components/common/OpenPopUp/AddProductPopup/AddProductPopup'
 
 function ProductDetailPage() {
+  const [showAddProductPopup, setShowAddProductPopup] = useState(false);
+  const [productDetails, setProductDetails] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [ram, setRam] = useState('4 GB');
+
+  // Function for add product popup
+  const handleAddProductPopUpShow = () => setShowAddProductPopup(true);
+  const handleAddProductPopUpClose = () => setShowAddProductPopup(false);
 
   const handleQuantityChange = (change) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + change));
   };
+  // Function for add  product
+  async function handleSaveProduct(data){
+    try{
+      console.log("data",data);
+
+    }catch(error){
+
+    }
+  }
+
+  useEffect(()=>{
+    const dummyProducts = [
+      {
+        title: 'HP AMD Ryzen 3',
+        variants: [
+          { ram: '8GB', price: '500', quantity: 10 },
+          { ram: '16GB', price: '700', quantity: 5 },
+        ],
+        subCategory: 'HP',
+        description: 'High performance laptop with AMD Ryzen 3 processor.',
+        images: ['image1_url', 'image2_url'],
+      }
+    ];
+    
+    setProductDetails(dummyProducts);
+  },[])
 
   return (
     <>
 
     <div className="container mt-5 w-75">
-    <BreadCrumb buttonShow={false} pathName={'Product details'}/>
+    <BreadCrumb  buttonShow={false}  pathName={'Product details'}/>
       <div className="row  d-flex justify-content-center">
         {/* Image Section */}
         <div className="col-md-6">
@@ -83,9 +116,15 @@ function ProductDetailPage() {
           </div>
 
           <div className="d-flex justify-content-between">
-            <button className="btn btn-warning">Edit product</button>
+            <button onClick={handleAddProductPopUpShow} type='button' className="btn btn-warning">Edit product</button>
             <button className="btn btn-primary">Buy it now</button>
           </div>
+          <AddProductPopup 
+              show={showAddProductPopup} 
+              handleClose={handleAddProductPopUpClose}
+              product={productDetails}
+              handleSaveProduct={handleSaveProduct} 
+          />
         </div>
       </div>
     </div>

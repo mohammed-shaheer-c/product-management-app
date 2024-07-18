@@ -13,7 +13,9 @@
   .formLabel {
     font-weight: bold;
   }
-  
+  .errorText{
+    color: red;
+  }
   .inputGroup {
     display: flex;
     align-items: center;
