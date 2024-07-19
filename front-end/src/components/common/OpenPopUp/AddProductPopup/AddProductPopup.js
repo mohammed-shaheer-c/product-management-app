@@ -85,7 +85,7 @@ const AddProductPopup = ({ show, handleClose, product, handleSaveProduct, subCat
     event.preventDefault();
     handleSaveProduct({ ...state, images: [...state.images, ...state.newImages] });
     dispatch({ type: 'RESET_IMAGES' });
-    handleClose();
+    clearPreviusStates();
   };
 
   // Handle image change
@@ -99,9 +99,19 @@ const AddProductPopup = ({ show, handleClose, product, handleSaveProduct, subCat
     dispatch({ type: 'ADD_NEW_IMAGES', newImages });
     setImagePreviews(prevPreviews => [...prevPreviews, ...newImages?.map(image => image.url)]);
   };
+  const clearPreviusStates= ()=>{
+    handleClose()
+    if(!product){
+      setImagePreviews([])
+      dispatch({
+        type: 'SET_INITIAL_STATE',
+        initialState,
+      });
+    }
 
+  }
   return (
-    <Modal show={show} onHide={handleClose} centered dialogClassName={styles.modalDialog}>
+    <Modal show={show} onHide={clearPreviusStates} centered dialogClassName={styles.modalDialog}>
       <Modal.Header closeButton className={styles.modalHeader}>
         <Modal.Title className={styles.modalTitle}>{product ? 'Edit Product' : 'Add Product'}</Modal.Title>
       </Modal.Header>
@@ -213,7 +223,7 @@ const AddProductPopup = ({ show, handleClose, product, handleSaveProduct, subCat
           </Form.Group>
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={clearPreviusStates}>
               Discard
             </Button>
             <Button variant="warning" type="submit">

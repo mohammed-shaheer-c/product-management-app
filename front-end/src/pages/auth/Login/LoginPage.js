@@ -5,6 +5,7 @@ import styles from './Login.module.css'; // Ensure this path matches your actual
 import { login } from "../../../services/authService";
 export default function LoginPage() {
   const navigate = useNavigate();
+  console.log("url",process.env.REACT_APP_API_BASE_URL);
   // States
   const [formFields, setFormFields] = useState({
     txtEmail: '',
@@ -47,7 +48,6 @@ export default function LoginPage() {
       // Signin functionality 
 
       const  result = await login(formFields);
-      console.log("result",result);
       if(result.code == 200){
          localStorage.setItem('authUser', true);
          navigate('/home');

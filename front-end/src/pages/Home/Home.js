@@ -16,11 +16,17 @@ function Home() {
   const [showSubCategoryPopup, setSubCategoryPopup] = useState(false);
   const { searchFilterValues, setSearchFilterValues } = useContext(SearchFilterContext);
   const [page, setPage] = useState(1);
+  const [productAdded, setProductAdded] = useState(false);
   const [products, setProducts]  = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(2);
+// Total number of items product
+  const [totalProduct, setTotalProduct] = useState(0)
+  const totalPages = Math.ceil(totalProduct / rowsPerPage);
 
   // Function for add product popup
-  const handleAddProductPopUpShow = () => setShowAddProductPopup(true);
+  const handleAddProductPopUpShow = () => {setShowAddProductPopup(true)
+  setProductAdded(false)}
   const handleAddProductPopUpClose = () => setShowAddProductPopup(false);
 
   // Function category popup
@@ -53,6 +59,7 @@ function Home() {
 
      if(result.code==200){
         alert("Successfully added")
+        setProductAdded(true)
         handleAddProductPopUpClose()
       }else{
         alert(result.message)
@@ -85,7 +92,6 @@ function Home() {
   // Function for add sub category
   async function handleAddSubCategory(categoryId,subCategoryName){
     try{
-      console.log("sub category",categoryId,subCategoryName);
       let requestBody ={
         categorId : categoryId,
         subCategoryName : subCategoryName
@@ -123,11 +129,12 @@ function Home() {
 
   async function getAllProductData(){
     try{
-      searchFilterValues.page = page
-      searchFilterValues.limit = 5
+      searchFilterValues.page = currentPage
+      searchFilterValues.limit = rowsPerPage
       let result = await getAllProductWithSearch(searchFilterValues)
       if(result.code==200){
         setProducts(result.data);
+        setTotalProduct(result.count)
       }else{
         alert('Product data feched faild')
       }
@@ -139,27 +146,8 @@ function Home() {
 
   useEffect(()=>{
     getAllProductData();
-  },[searchFilterValues.name,searchFilterValues.subCategory, page])
-  let data = {
-    "_id": "66991263df2102760a535834",
-    "title": "HP AMD Ryzen 3",
-    "productCode": "HP-AMD-RYZEN-3-86d67346-1991-4b0e-9fdd-df858e8e404e-1721308494290",
-    "variants": [],
-    "subCategory": "66990d316e9e0c4d4810c1d9",
-    "description": "test",
-    "images": [
-        {
-            "filename": "/products/393066_116-1168017_4k-ultra-hd-wallpaper-3d-4k.jpg",
-            "_id": "6699154edad2a091ba2c8cee"
-        },
-        {
-            "filename": "/products/483490_admin home.png",
-            "_id": "6699154edad2a091ba2c8cef"
-        }
-    ],
-    "createdAt": "2024-07-18T13:02:27.630Z",
-    "__v": 3
-}
+  },[searchFilterValues.name,searchFilterValues.subCategory, currentPage,productAdded])
+
   return (
     <div className='container-fluid row'>
       <BreadCrumb 
@@ -192,7 +180,15 @@ function Home() {
           categoryList={categoryWithSubCategory}
           
         />
-        <ListingProbox products={products} />
+        <ListingProbox 
+        products={products}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={setRowsPerPage}
+        totalItems={totalProduct}
+         />
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import axios from 'axios';
 
 export const addCategory = async (data) => {
     try {
-        console.log("data",data);
         const response =  await axios.post(`${API_BASE_URL}/add/category`, data);
         return response.data;
     } catch (error) {

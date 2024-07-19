@@ -15,7 +15,6 @@ const SideBar = ({ categoryWithSubCategory, setSearchFilterValues }) => {
     }));
   };
 
-  console.log("selectedSubCategories",selectedSubCategories);
 
   // Function to handle changes in sub-category checkbox state
   const handleSubCategoryChange = (subCategoryId) => {

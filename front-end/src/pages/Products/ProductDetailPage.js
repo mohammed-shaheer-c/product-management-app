@@ -30,7 +30,6 @@ function ProductDetailPage() {
   // Function to handle saving product details (for the popup)
   async function handleSaveProduct(data) {
     try {
-      console.log("data", data);
       data.productId = id
       let result = await editProduct(data);
       if (result.code === 200) {
@@ -80,7 +79,6 @@ function ProductDetailPage() {
         let productDetails = await getParticularProduct(id);
         if (productDetails.code === 200) {
           setProductDetails(productDetails.data);
-          console.log("roductDetails.data",productDetails.data);
           setRam(productDetails.data.variants[0]?.ram || ''); // Set initial RAM value
         } else {
           alert('Product data fetch failed');
@@ -97,10 +95,17 @@ function ProductDetailPage() {
   }, [id]);
 
   // Conditional rendering: show a loading indicator while fetching product details
+
+  const variantDataBasedOnRam = useMemo(() => {
+    if (productDetails?.variants && productDetails?.variants?.length > 0) {
+      return productDetails?.variants.filter(item => item.ram === ram);
+    }
+    return [];
+  }, [productDetails?.variants, ram]);
   if (!productDetails) {
     return <div>Loading...</div>;
   }
-
+  
   return (
     <>
       <div className="container mt-5 w-75">
@@ -131,9 +136,9 @@ function ProductDetailPage() {
           {/* Product Details Section */}
           <div className="col-md-6">
             <h3>{productDetails.title}</h3>
-            <h4>${productDetails.variants[0]?.price.toFixed(2)}</h4>
+            <h4>${variantDataBasedOnRam[0]?.price.toFixed(2)}</h4>
             <p className="text-success">In stock</p>
-            <p className="text-black">Hurry up! Only {productDetails.variants[0]?.quantity} products left in stock!</p>
+            <p className="text-black">Hurry up! Only {variantDataBasedOnRam[0].quantity} products left in stock!</p>
 
             <div className="mb-3">
               <label htmlFor="ram" className="form-label">Ram:</label>

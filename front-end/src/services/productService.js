@@ -43,7 +43,6 @@ export const editProduct = async (data) => {
         // Append variants as a JSON string
         formData.append('variants', JSON.stringify(data.variants));
 
-
         // Append new images (file objects)
         data.newImages.forEach((image, index) => {
             formData.append(`images`, image.file);

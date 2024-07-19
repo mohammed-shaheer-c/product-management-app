@@ -22,7 +22,6 @@ const AddSubCategoryPopup = ({ show, handleClose, handleAddSubCategory, category
       setErrorMessage('Please select a category and enter a valid sub-category name.');
       return;
     }
-    console.log(selectedCategory,subCategoryName);
 
     handleAddSubCategory(selectedCategory, subCategoryName.trim());
     setSubCategoryName('');
