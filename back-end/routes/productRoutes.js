@@ -12,7 +12,6 @@ module.exports = function(app)
 
     // edit product
     app.post('/edit/product',
-        middleware.imageUpload,
         productController.editProduct
     );
 

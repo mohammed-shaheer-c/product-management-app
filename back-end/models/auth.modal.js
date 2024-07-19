@@ -11,7 +11,6 @@ module.exports = class users
            const {txtName, txtEmail,txtPassWord} = requestBody;
            let isEmailExist = await UserSchema.find({email : txtEmail})
            if(isEmailExist.length !== 0){
-            console.log("hello ");
                 return false;
            }
 

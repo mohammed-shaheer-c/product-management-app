@@ -49,20 +49,14 @@ module.exports = class category
             if(!product){
                 return {message : "PRODUCTNOTFOUND"}
             }
-  console.log("images",images);
+
 
             product.title = title || product.title;
             product.productCode = generateProductCode(title) || product.productCode;
             product.variants = variants || product.variants;
             product.subCategory = subCategory || product.subCategory;
             product.description = description || product.description;
-            product.images = images.map(image => {
-                return {
-                    ...image,
-                    filename: prependBaseUrlToFilename(image.filename)
-                };
-            });
-            
+
             await product.save();
 
             return { message: 'Product updated successfully'}
@@ -117,7 +111,7 @@ module.exports = class category
     
             // Calculate the number of documents to skip
             const skip = (page - 1) * limit;
-            
+            const totalCount = await ProductSchema.countDocuments(filter);
             const products = await ProductSchema.find(filter)
                 .populate('subCategory', 'title')
                 .skip(skip)
@@ -129,8 +123,8 @@ module.exports = class category
                     item.filename = `${process.env.APP_ENDPOINT}${constants.imageLocations.product.view_path}/${item.filename}`;
                 }
             }
-    
-            return { message: 'products fetched successfully', data: products };
+            console.log("totalCount",totalCount);
+            return { message: 'products fetched successfully', data: products,count : totalCount };
         } catch (error) {
             console.log("error", error.message);
             throw error; // Rethrow the error to handle it properly in the caller

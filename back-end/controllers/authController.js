@@ -3,7 +3,7 @@ exports.userRegister = async(req, res)=>
     {
         try{
             let response = await authModal.signup(req.body);
-            console.log(response);
+
             if(response){
                 return res.status(200).send
                 ({

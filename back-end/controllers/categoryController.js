@@ -3,7 +3,6 @@ exports.addCategory = async(req, res)=>
     {
         try{
             let result = await categoryModal.addNewProductCategory(req.body);
-            console.log(result);
             if(result){
                 return res.status(200).send
                 ({
@@ -36,7 +35,7 @@ exports.getAllProductCategories = async(req, res)=>
     {
         try{
             let result = await categoryModal.getAllCategoriesWithSubCategories();
-            console.log(result);
+
             if(result){
                 return res.status(200).send
                 ({

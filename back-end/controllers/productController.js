@@ -106,8 +106,9 @@ exports.getAllProduct = async(req, res)=>
                     status : true,
                     code : 200,
                     message : 'Products fetched successfully.',
-                    data : result.data
-                });
+                    data : result.data,
+                    count : result.count
+                }); 
         }catch(error){
             return res.status(200).send
             ({
